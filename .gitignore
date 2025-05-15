@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/UniCourseManager/assignments.txt
+/UniCourseManager/courses.txt
+/UniCourseManager/enrollments.txt
+/UniCourseManager/messages.txt
+/UniCourseManager/users.txt

@@ -66,6 +66,12 @@
     <ClCompile Include="SystemFunctions.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Assignment.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Course.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="courses.txt">
@@ -89,12 +95,24 @@
     <ClInclude Include="SystemFunctions.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Course.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assignment.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="users.txt">
       <Filter>Files</Filter>
     </Text>
     <Text Include="messages.txt">
+      <Filter>Files</Filter>
+    </Text>
+    <Text Include="enrollments.txt">
+      <Filter>Files</Filter>
+    </Text>
+    <Text Include="assignments.txt">
       <Filter>Files</Filter>
     </Text>
   </ItemGroup>

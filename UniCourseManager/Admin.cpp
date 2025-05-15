@@ -1,22 +1,35 @@
 #include <fstream>
 #include <iostream>
 #include <stdexcept>
+
 #include "Admin.h"
+#include "Teacher.h"
+#include "Student.h"
+#include "MyVector.h"
+#include "MyString.h"
 
 using namespace std;
 
-
-Admin::Admin(MyString name, MyString surname, MyString email, MyString password, int id)
+Admin::Admin(const MyString& name, const MyString& surname, const MyString& password, int id)
 {
 	this->name = name;
 	this->surname = surname;
-	this->email = email;
 	this->password = password;
 	this->id = id;
 }
 
-void Admin::createTeacher(MyString name, MyString surname, MyString password, MyVector<User*>& users) {
-	Teacher* teacher = new Teacher(name, surname, password, users.getSize());
+void Admin::createTeacher(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users) {
+	int id = 0;
+
+	for (size_t i = 0; i < users.getSize(); i++)
+	{
+		if (users[i]->getId() > id)
+		{
+			id = users[i]->getId();
+		}
+	}
+
+	Teacher* teacher = new Teacher(name, surname, password, ++id);
 	users.push_back(teacher);
 
 	ofstream os("users.txt", ios::app);
@@ -26,13 +39,23 @@ void Admin::createTeacher(MyString name, MyString surname, MyString password, My
 		throw invalid_argument("File does not exist!");
 	}
 
-	os << "Teacher " << name << " " << surname << " " << password << " " << teacher->getId() << endl;
+	os << "Teacher|" << name << "|" << surname << "|" << password << "|" << teacher->getId() << endl;
 
 	os.close();
 }
 
-void Admin::createStudent(MyString name, MyString surname, MyString password, MyVector<User*>& users) {
-	Student* student = new Student(name, surname, password, users.getSize());
+void Admin::createStudent(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users) {
+	int id = 0;
+
+	for (size_t i = 0; i < users.getSize(); i++)
+	{
+		if (users[i]->getId() > id)
+		{
+			id = users[i]->getId();
+		}
+	}
+
+	Student* student = new Student(name, surname, password, ++id);
 	users.push_back(student);
 
 	ofstream os("users.txt", ios::app);
@@ -42,41 +65,26 @@ void Admin::createStudent(MyString name, MyString surname, MyString password, My
 		throw invalid_argument("File does not exist!");
 	}
 
-	os << "Student " << name << " " << surname << " " << password << " " << student->getId() << endl;
+	os << "Student|" << name << "|" << surname << "|" << password << "|" << student->getId() << endl;
 
 	os.close();
 }
 
-void Admin::loadUsers(MyVector<User*>& users) {
-	ifstream is("users.txt");
-
-	MyString buffer;
-	while (true)
+void Admin::deleteUser(int id, MyVector<User*>& users) {
+	if (id == 0)
 	{
-		if (is.eof())
-		{
-			break;
-		}
-
-		buffer.getline(is);
-		MyVector<MyString> tokens = buffer.split(' ');
-
-		if (tokens[0] == "Teacher")
-		{
-			Teacher* teacher = new Teacher(tokens[1], tokens[2], tokens[3], tokens[4].toInt());
-			users.push_back(teacher);
-		}
-		else if (tokens[0] == "Student")
-		{
-			Student* student = new Student(tokens[1], tokens[2], tokens[3], tokens[4].toInt());
-			users.push_back(student);
-		}
+		cout << "You can't delete yourself..." << endl;
+		return;
 	}
 
-	is.close();
-}
+	User* userToDelete = findUser(id, users);
 
-void Admin::deleteUser(int id, MyVector<User*>& users) {
+	if (!userToDelete)
+	{
+		cout << "User with such ID does not exist!" << endl;
+		return;
+	}
+
 	for (size_t i = 0; i < users.getSize(); i++)
 	{
 		if (users[i]->getId() == id)
@@ -86,40 +94,45 @@ void Admin::deleteUser(int id, MyVector<User*>& users) {
 		}
 	}
 
-	ifstream is("users.txt");
+	deleteUserFromFile(id);
+	deleteMessageFromFile(id);
+}
 
-	if (!is.is_open())
+void Admin::messageAll(const MyString& content, MyVector<User*>& users) {
+	MyString sender;
+	sender += this->name;
+	sender += " ";
+	sender += this->surname;
+
+	for (size_t i = 0; i < users.getSize(); i++)
 	{
-		throw invalid_argument("Files does not exist!");
-	}
-
-	ofstream os("temp.txt");
-
-	MyString buffer;
-	while (true)
-	{
-		buffer.getline(is);
-
-		if (is.eof())
-		{
-			break;
-		}
-
-		MyVector<MyString> tokens = buffer.split(' ');
-
-		if (tokens[4].toInt() == id)
+		if (users[i]->getId() == this->id)
 		{
 			continue;
 		}
-		else
-		{
-			os << buffer << endl;
-		}
+
+		Message message(users[i]->getId(), sender, content);
+
+		users[i]->addMessage(message);
 	}
 
-	is.close();
-	os.close();
+	updateMessages(users);
+}
 
-	remove("users.txt");
-	rename("temp.txt", "users.txt");
+void Admin::checkUserMailbox(int id, MyVector<User*>& users) {
+	User* user = findUser(id, users);
+
+	if (!user)
+	{
+		cout << "User with such ID does not exist!" << endl;
+		return;
+	}
+
+	if (user->getMailbox().getSize() == 0)
+	{
+		cout << "This user's mailbox is empty." << endl;
+		return;
+	}
+
+	user->checkMailbox();
 }

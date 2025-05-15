@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <cstring>
 #include "MyString.h"
 
 using namespace std;
@@ -95,6 +96,39 @@ MyString& MyString::operator+=(const char ch) {
 	return *this;
 }
 
+MyString& MyString::operator+=(int num) {
+	int numCopy = num;
+	int numSize = 0;
+
+	while (numCopy > 0)
+	{
+		numCopy /= 10;
+		numSize++;
+	}
+
+	int newSize = size + numSize;
+	char* result = new char[newSize + 1];
+	strcpy_s(result, size + 1, data);
+
+	int index = newSize - 1;
+
+	while (num > 0)
+	{
+		char c = (num % 10) + '0';
+		num /= 10;
+
+		result[index--] = c;
+	}
+
+	result[newSize] = '\0';
+
+	delete[] data;
+	data = result;
+	size = newSize;
+
+	return *this;
+}
+
 char& MyString::operator[](int index) {
 	if (index < 0 || index >= size)
 	{
@@ -153,8 +187,20 @@ void MyString::getline(istream& is) {
 
 int MyString::toInt() const {
 	int result = 0;
+	int sign = 1;
+	int start = 0;
 
-	for (size_t i = 0; i < size; i++)
+	if (data[0] == '-')
+	{
+		start++;
+		sign = -1;
+	}
+	else if (data[0] == '+')
+	{
+		start++;
+	}
+
+	for (size_t i = start; i < size; i++)
 	{
 		if (data[i] < '0' || data[i] > '9')
 		{
@@ -165,5 +211,50 @@ int MyString::toInt() const {
 		result += data[i] - '0';
 	}
 
-	return result;
+	return result * sign;
+}
+
+double MyString::toDouble() const {
+	double result = 0.0;
+	int sign = 1;
+	double fractionalPart = 0.0;
+	double divisor = 1.0;
+
+	int start = 0;
+	int dotIndex = -1;
+
+	if (data[0] == '-')
+	{
+		start++;
+		sign = -1;
+	}
+	else if (data[0] == '+')
+	{
+		start++;
+	}
+
+	for (size_t i = start; i < size; i++)
+	{
+		if (data[i] == '.')
+		{
+			dotIndex = i;
+			break;
+		}
+
+		result *= 10;
+		result += data[i] - '0';
+	}
+
+	if (dotIndex != -1)
+	{
+		for (size_t i = dotIndex + 1; i < size; i++)
+		{
+			fractionalPart = fractionalPart * 10 + (data[i] - '0');
+			divisor *= 10;
+		}
+	}	
+
+	result += fractionalPart / divisor;
+
+	return result * sign;
 }

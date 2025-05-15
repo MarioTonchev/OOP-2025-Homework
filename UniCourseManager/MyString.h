@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cstring>   
 #include "MyVector.h"
 
 class MyString {
@@ -18,6 +19,7 @@ public:
 	MyString& operator+=(const MyString& other);
 	MyString& operator+=(const char* str);
 	MyString& operator+=(const char ch);
+	MyString& operator+=(int num);
 	char& operator[](int index);
 	char operator[](int index) const;
 	friend std::ostream& operator<<(std::ostream& os, const MyString& str);
@@ -49,6 +51,7 @@ public:
 
 	void getline(std::istream& is);
 	int toInt() const;
+	double toDouble() const;
 
 	const char* get() const;
 	int len() const;

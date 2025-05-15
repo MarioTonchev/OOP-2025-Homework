@@ -1,10 +1,22 @@
 #pragma once
-#include "User.h" //may cause circular dependency so be sure to check later
 #include <ctime>
+#include "MyString.h"
 
 class Message {
 private:
-	User* sender;
-	char* content;
-	//add date
+	int receiverId;
+	MyString sender;
+	MyString content;
+	MyString date;
+	MyString time;
+
+public:
+	Message(int receiverId = 0, const MyString& sender = "", const MyString& content = "");
+	Message(int receiverId, const MyString& sender, const MyString& content, const MyString& date, const MyString& time);
+
+	int getSenderId() const;
+	const MyString& getSender() const;
+	const MyString& getContent() const;
+	const MyString& getDate() const;
+	const MyString& getTime() const;
 };

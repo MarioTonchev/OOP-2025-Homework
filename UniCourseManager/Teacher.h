@@ -1,7 +1,15 @@
 #pragma once
 #include "User.h"
+#include "MyString.h"
+#include "Course.h"
 
 class Teacher : public User {
 public:
-	Teacher(MyString name, MyString surname, MyString password, int id);
+	Teacher(const MyString& name = "", const MyString& surname = "", const MyString& password = "", int id = 0);
+	void createCourse(const MyString& courseName, const MyString& coursePassword, MyVector<Course*>& courses);
+	void addToCourse(const MyString& courseName, int userId, MyVector<User*>& users, MyVector<Course*>& courses);
+	void createAssignment(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses);
+	void previewAssignmentWork(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses, MyVector<User*>& users);
+	void gradeStudent(const MyString& courseName, const MyString& assignmentName, int userId, double grade, const MyString& message, MyVector<Course*>& courses);
+	void messageStudents(const MyString& courseName, const MyString& content, MyVector<User*>& users);
 };

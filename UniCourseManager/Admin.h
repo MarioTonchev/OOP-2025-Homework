@@ -3,14 +3,15 @@
 #include "Teacher.h"
 #include "Student.h"
 #include "MyVector.h"
+#include "MyString.h"
+#include "SystemFunctions.h"
 
 class Admin : public User {
 public:
-	Admin(MyString name, MyString surname, MyString email, MyString password = "0000", int id = 0);
-	void loadUsers(MyVector<User*>& users);
-	void createTeacher(MyString name, MyString surname, MyString password, MyVector<User*>& users);
-	void createStudent(MyString name, MyString surname, MyString password, MyVector<User*>& users);
+	Admin(const MyString& name, const MyString& surname, const MyString& password = "0000", int id = 0);
+	void createTeacher(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users);
+	void createStudent(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users);
 	void deleteUser(int id, MyVector<User*>& users);
-	void sendMessage();
-	void checkMailbox();
+	void messageAll(const MyString& content, MyVector<User*>& users);
+	void checkUserMailbox(int id, MyVector<User*>& users);
 };

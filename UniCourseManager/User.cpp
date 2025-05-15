@@ -1,21 +1,96 @@
+#include <iostream>
+#include <fstream>
 #include "User.h"
+
+using namespace std;
+
+User::~User() {}
 
 int User::getId() const {
 	return id;
 }
 
-MyString User::getName() const {
+const MyString& User::getName() const {
 	return name;
 }
 
-MyString User::getSurname() const {
+const MyString& User::getSurname() const {
 	return surname;
 }
 
-MyString User::getPassword() const {
+const MyString& User::getPassword() const {
 	return password;
 }
 
-MyString User::getEmail() const {
-	return email;
+const MyVector<Message>& User::getMailbox() const {
+	return mailbox;
+}
+
+const MyVector<Course*>& User::getCourses() const {
+	return courses;
+}
+
+void User::addMessage(const Message& message) {
+	mailbox.push_back(message);
+}
+
+void User::addCourse(const Course* course) {
+	courses.push_back((Course*)course);
+}
+
+void User::changePassword(const MyString& currentPass, const MyString& newPass) {
+	if (currentPass != password)
+	{
+		cout << "Your current password does not match!" << endl;
+		return;
+	}
+	
+	password = newPass;
+}
+
+void User::checkMailbox() const {
+	if (mailbox.getSize() == 0)
+	{
+		cout << "Your mailbox is empty!" << endl;
+		return;
+	}
+	
+	for (size_t i = 0; i < mailbox.getSize(); i++)
+	{
+		cout << mailbox[i].getTime() << " " << mailbox[i].getDate() << ", sent by " << mailbox[i].getSender()
+			<< ": " << mailbox[i].getContent() << endl;
+	}
+}
+
+void User::message(int id, const MyString& content, MyVector<User*>& users) const {
+	if (id == this->id)
+	{
+		cout << "You cannot message yourself!" << endl;
+		return;
+	}
+
+	MyString sender;
+	sender += this->name;
+	sender += " ";
+	sender += this->surname;
+
+	Message message(id, sender, content);
+
+	User* user = findUser(id, users);
+
+	if (!user)
+	{
+		cout << "User with such ID does not exist!" << endl;
+		return;
+	}
+
+	user->addMessage(message);
+	updateMessages(users);
+}
+
+void User::clearMailbox() {
+	while (mailbox.getSize() > 0)
+	{
+		mailbox.pop_back();
+	}
 }

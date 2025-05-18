@@ -1,12 +1,9 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include <fstream>
 #include <iostream>
 #include <stdexcept>
 
 #include "Admin.h"
-#include "Teacher.h"
-#include "Student.h"
-#include "MyVector.h"
-#include "MyString.h"
 
 using namespace std;
 

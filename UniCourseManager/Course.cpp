@@ -1,3 +1,4 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include "Course.h"
 
 Course::Course(const MyString& name, const MyString& password, int teacherId) {

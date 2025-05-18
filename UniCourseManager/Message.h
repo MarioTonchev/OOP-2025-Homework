@@ -1,6 +1,10 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include <ctime>
+
 #include "MyString.h"
+#include "HelperFunctions.h"
 
 class Message {
 private:

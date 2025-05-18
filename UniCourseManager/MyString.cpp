@@ -1,5 +1,7 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include <stdexcept>
 #include <cstring>
+
 #include "MyString.h"
 
 using namespace std;

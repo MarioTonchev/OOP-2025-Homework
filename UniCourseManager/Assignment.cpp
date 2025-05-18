@@ -1,3 +1,4 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include "Assignment.h"
 
 Assignment::Assignment(const MyString& name) {

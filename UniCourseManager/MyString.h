@@ -1,7 +1,9 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include <iostream>
 #include <cstring>   
-#include "MyVector.h"
+#include "MyVector.hpp"
 
 class MyString {
 private:

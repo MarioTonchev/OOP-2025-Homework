@@ -1,4 +1,6 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include <stdexcept>
 
 template <typename T>
@@ -60,7 +62,6 @@ public:
 
 		return *this;
 	}
-
 
 	T& operator[](int index) {
 		if (index < 0 || index >= size)

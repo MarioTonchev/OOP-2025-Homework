@@ -1,10 +1,14 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include "User.h"
 #include "Teacher.h"
 #include "Student.h"
-#include "MyVector.h"
 #include "MyString.h"
-#include "SystemFunctions.h"
+#include "MyVector.hpp"
+#include "UserUtils.h"
+#include "IOManager.h"
+
 
 class Admin : public User {
 public:

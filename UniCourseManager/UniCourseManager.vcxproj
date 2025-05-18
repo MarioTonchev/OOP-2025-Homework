@@ -130,26 +130,34 @@
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Course.cpp" />
+    <ClCompile Include="CourseUtils.cpp" />
+    <ClCompile Include="HelperFunctions.cpp" />
+    <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="MyString.h" />
-    <ClCompile Include="MyVector.h" />
+    <ClCompile Include="MyVector.hpp" />
     <ClCompile Include="Student.cpp" />
-    <ClCompile Include="SystemFunctions.cpp" />
+    <ClCompile Include="Submission.cpp" />
     <ClCompile Include="Teacher.cpp" />
     <ClCompile Include="UniCourseManager.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Assignment.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="courses.txt" />
+    <ClInclude Include="CourseUtils.h" />
+    <ClInclude Include="HelperFunctions.h" />
+    <ClInclude Include="IOManager.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Student.h" />
-    <ClInclude Include="SystemFunctions.h" />
+    <ClInclude Include="Submission.h" />
     <ClInclude Include="Teacher.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assignments.txt" />

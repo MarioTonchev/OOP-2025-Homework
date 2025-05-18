@@ -1,10 +1,13 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
-#include "MyVector.h"
-#include "MyString.h"
-#include "Assignment.h"
-#include "User.h"
 
+#include "MyString.h"
+#include "MyVector.hpp"
+#include "Assignment.h"
+
+class User;
 class Teacher;
+class Student;
 
 class Course {
 private:

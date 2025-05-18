@@ -1,8 +1,9 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include "MyString.h"
-#include "MyVector.h"
+#include "MyVector.hpp"
 #include "Message.h"
-#include "SystemFunctions.h"	
 
 class Course;
 class Student;

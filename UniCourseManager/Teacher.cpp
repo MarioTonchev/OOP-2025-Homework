@@ -1,8 +1,9 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+
 #include "Teacher.h"
-#include "Student.h"
 
 using namespace std;
 

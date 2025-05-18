@@ -1,12 +1,17 @@
-﻿#include <iostream>
+﻿//Mario Tonchev Tonchev 0MI0600460
+#include <iostream>
 #include <fstream>
 #include <typeinfo>
 
-#include "Admin.h"
-#include "Course.h"
-#include "SystemFunctions.h"
-#include "MyVector.h"
+#include "MyVector.hpp"
 #include "MyString.h"
+#include "Admin.h"
+#include "Teacher.h"
+#include "Student.h"
+#include "Course.h"
+#include "IOManager.h"
+#include "HelperFunctions.h"
+#include "UserUtils.h"
 
 using namespace std;
 
@@ -149,7 +154,7 @@ int main()
 			}
 			else if (action == "quit")
 			{
-				return 0;
+				break;
 			}
 
 			command.getline(cin);
@@ -159,4 +164,7 @@ int main()
 	{
 		cout << e.what();
 	}	
+
+	freeUsers(users);
+	freeCourses(courses);
 }

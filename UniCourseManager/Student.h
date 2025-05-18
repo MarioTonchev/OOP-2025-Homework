@@ -1,7 +1,14 @@
+//Mario Tonchev Tonchev 0MI0600460
 #pragma once
+
 #include "User.h"
+#include "MyVector.hpp"
 #include "MyString.h"
 #include "Course.h"
+#include "CourseUtils.h"
+#include "Assignment.h"
+#include "IOManager.h"
+#include "Submission.h"
 
 class Student : public User {
 public:

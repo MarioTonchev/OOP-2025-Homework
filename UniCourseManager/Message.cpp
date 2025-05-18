@@ -1,5 +1,5 @@
+//Mario Tonchev Tonchev 0MI0600460
 #include "Message.h"
-#include "SystemFunctions.h"
 
 Message::Message(int receiverId, const MyString& sender, const MyString& content) {
 	this->receiverId = receiverId;

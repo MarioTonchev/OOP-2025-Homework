@@ -28,12 +28,6 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{76143e64-c597-44ce-9dbe-0d49312b3bca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Core">
-      <UniqueIdentifier>{7b2478df-eff4-4a96-bbfa-a7dcffae62ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core">
-      <UniqueIdentifier>{2653395d-54cc-401e-b089-7f0ba7fa72be}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniCourseManager.cpp">
@@ -42,7 +36,7 @@
     <ClCompile Include="MyString.h">
       <Filter>Header Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="MyVector.h">
+    <ClCompile Include="MyVector.hpp">
       <Filter>Header Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="Admin.cpp">
@@ -63,14 +57,26 @@
     <ClCompile Include="MyString.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="SystemFunctions.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Assignment.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
     <ClCompile Include="Course.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Submission.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="UserUtils.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="CourseUtils.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperFunctions.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,14 +98,26 @@
     <ClInclude Include="Student.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="SystemFunctions.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Course.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="Assignment.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Submission.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="UserUtils.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="CourseUtils.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperFunctions.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

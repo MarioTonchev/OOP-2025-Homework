@@ -1,7 +1,7 @@
 #pragma once
 
-const char* usersFile = "users.txt";
-const char* coursesFile = "courses.txt";
-const char* messagesFile = "messages.txt";
-const char* assignmentsFile = "assignments.txt";
-const char* enrollmentsFile = "enrollments.txt";
+extern const char* usersFile;
+extern const char* coursesFile;
+extern const char* messagesFile;
+extern const char* assignmentsFile;
+extern const char* enrollmentsFile;

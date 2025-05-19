@@ -131,6 +131,7 @@
     <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="CourseUtils.cpp" />
+    <ClCompile Include="FileConstants.cpp" />
     <ClCompile Include="HelperFunctions.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Message.cpp" />

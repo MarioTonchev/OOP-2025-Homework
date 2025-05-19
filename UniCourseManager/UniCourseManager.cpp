@@ -17,6 +17,8 @@ using namespace std;
 
 int main()
 {
+	//To do: when deleting user also delete him from courses and delete his submission from courses!
+	
 	//Make sure to add admin in users.txt before starting the program! Admin|admin|adminov|0000|0
 	MyVector<User*> users;
 	MyVector<Course*> courses;

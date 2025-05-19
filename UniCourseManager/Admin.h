@@ -8,6 +8,7 @@
 #include "MyVector.hpp"
 #include "UserUtils.h"
 #include "IOManager.h"
+#include "FileConstants.h"
 
 
 class Admin : public User {

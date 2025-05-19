@@ -40,7 +40,7 @@ void Student::enroll(const MyString& courseName, const MyString& coursePassword,
 	course->addStudent(this);
 	this->addCourse(course);
 	
-	ofstream os("enrollments.txt", ios::app);
+	ofstream os(enrollmentsFile, ios::app);
 
 	if (!os.is_open())
 	{

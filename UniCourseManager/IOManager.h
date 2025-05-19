@@ -10,6 +10,7 @@
 #include "CourseUtils.h"
 #include "UserUtils.h"
 #include "MyVector.hpp"
+#include "FileConstants.h"
 
 void loadUsers(MyVector<User*>& users);
 void loadMessages(MyVector<User*>& users);

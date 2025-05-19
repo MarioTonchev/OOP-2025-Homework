@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{76143e64-c597-44ce-9dbe-0d49312b3bca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Constants">
+      <UniqueIdentifier>{0989f31d-7c8e-437c-9d0a-9f7f925c1372}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniCourseManager.cpp">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="HelperFunctions.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FileConstants.h">
+      <Filter>Header Files\Constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

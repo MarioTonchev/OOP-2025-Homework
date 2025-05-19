@@ -150,6 +150,7 @@
     <ClInclude Include="Course.h" />
     <ClInclude Include="courses.txt" />
     <ClInclude Include="CourseUtils.h" />
+    <ClInclude Include="FileConstants.h" />
     <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="Message.h" />

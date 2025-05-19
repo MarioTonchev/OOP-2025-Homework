@@ -29,7 +29,7 @@ void Admin::createTeacher(const MyString& name, const MyString& surname, const M
 	Teacher* teacher = new Teacher(name, surname, password, ++id);
 	users.push_back(teacher);
 
-	ofstream os("users.txt", ios::app);
+	ofstream os(usersFile, ios::app);
 
 	if (!os.is_open())
 	{
@@ -55,7 +55,7 @@ void Admin::createStudent(const MyString& name, const MyString& surname, const M
 	Student* student = new Student(name, surname, password, ++id);
 	users.push_back(student);
 
-	ofstream os("users.txt", ios::app);
+	ofstream os(usersFile, ios::app);
 
 	if (!os.is_open())
 	{

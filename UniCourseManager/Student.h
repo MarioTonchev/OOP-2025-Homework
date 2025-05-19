@@ -9,6 +9,7 @@
 #include "Assignment.h"
 #include "IOManager.h"
 #include "Submission.h"
+#include "FileConstants.h"
 
 class Student : public User {
 public:

@@ -9,6 +9,7 @@
 #include "IOManager.h"
 #include "Assignment.h"
 #include "Course.h"
+#include "FileConstants.h"
 
 class Teacher : public User {
 public:

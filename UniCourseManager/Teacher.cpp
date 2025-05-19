@@ -25,7 +25,7 @@ void Teacher::createCourse(const MyString& courseName, const MyString& coursePas
 
 	courses.push_back(course);
 
-	ofstream os("courses.txt", ios::app);
+	ofstream os(coursesFile, ios::app);
 
 	if (!os.is_open())	
 	{
@@ -85,7 +85,7 @@ void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*
 	userToAdd->addCourse(course);
 	course->addStudent(userToAdd);
 
-	ofstream os("enrollments.txt", ios::app);
+	ofstream os(enrollmentsFile, ios::app);
 
 	if (!os.is_open())
 	{
@@ -118,7 +118,7 @@ void Teacher::createAssignment(const MyString& courseName, const MyString& assig
 	course->addAssignment(assignment);
 	updateCourses(courses);
 
-	ofstream os("assignments.txt", ios::app);
+	ofstream os(assignmentsFile, ios::app);
 
 	if (!os.is_open())
 	{

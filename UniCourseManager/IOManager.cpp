@@ -9,7 +9,7 @@ using namespace std;
 #pragma warning(disable:4996)
 
 void loadUsers(MyVector<User*>& users) {
-	ifstream is("users.txt");
+	ifstream is(usersFile);
 
 	if (!is.is_open())
 	{
@@ -48,7 +48,7 @@ void loadUsers(MyVector<User*>& users) {
 }
 
 void loadMessages(MyVector<User*>& users) {
-	ifstream is("messages.txt");
+	ifstream is(messagesFile);
 
 	if (!is.is_open())
 	{
@@ -84,7 +84,7 @@ void loadMessages(MyVector<User*>& users) {
 }
 
 void loadCourses(MyVector<Course*>& courses) {
-	ifstream is("courses.txt");
+	ifstream is(coursesFile);
 
 	if (!is.is_open())
 	{
@@ -111,7 +111,7 @@ void loadCourses(MyVector<Course*>& courses) {
 }
 
 void loadEnrollments(MyVector<User*>& users, MyVector<Course*>& courses) {
-	ifstream is("enrollments.txt");
+	ifstream is(enrollmentsFile);
 
 	if (!is.is_open())
 	{
@@ -152,7 +152,7 @@ void loadTeacherCourses(MyVector<User*>& users, MyVector<Course*>& courses) {
 }
 
 void loadAssignments(MyVector<Course*>& courses) {
-	ifstream is("assignments.txt");
+	ifstream is(assignmentsFile);
 
 	if (!is.is_open())
 	{
@@ -200,7 +200,7 @@ void loadAssignments(MyVector<Course*>& courses) {
 }
 
 void deleteUserFromFile(int userId) {
-	ifstream is("users.txt");
+	ifstream is(usersFile);
 
 	if (!is.is_open())
 	{
@@ -234,12 +234,12 @@ void deleteUserFromFile(int userId) {
 	is.close();
 	os.close();
 
-	remove("users.txt");
-	rename("temp.txt", "users.txt");
+	remove(usersFile);
+	rename("temp.txt", usersFile);
 }
 
 void deleteMessageFromFile(int userId) {
-	ifstream is("messages.txt");
+	ifstream is(messagesFile);
 
 	if (!is.is_open())
 	{
@@ -273,12 +273,12 @@ void deleteMessageFromFile(int userId) {
 	is.close();
 	os.close();
 
-	remove("messages.txt");
-	rename("temp.txt", "messages.txt");
+	remove(messagesFile);
+	rename("temp.txt", messagesFile);
 }
 
 void updateUsers(MyVector<User*>& users) {
-	ofstream os("users.txt");
+	ofstream os(usersFile);
 
 	if (!os.is_open())
 	{
@@ -298,7 +298,7 @@ void updateUsers(MyVector<User*>& users) {
 }
 
 void updateMessages(MyVector<User*>& users) {
-	ofstream os("messages.txt");
+	ofstream os(messagesFile);
 
 	if (!os.is_open())
 	{
@@ -319,7 +319,7 @@ void updateMessages(MyVector<User*>& users) {
 }
 
 void updateCourses(MyVector<Course*>& courses) {
-	ofstream os("courses.txt");
+	ofstream os(coursesFile);
 
 	if (!os.is_open())
 	{
@@ -342,7 +342,7 @@ void updateCourses(MyVector<Course*>& courses) {
 }
 
 void updateAssignments(MyVector<Course*>& courses) {
-	ofstream os("assignments.txt");
+	ofstream os(assignmentsFile);
 
 	if (!os.is_open())
 	{

@@ -24,7 +24,7 @@ public:
 	const MyString& getPassword() const;
 	int getTeacherId() const;
 	MyVector<Assignment>& getAssignments();
-	const MyVector<User*>& getStudents() const;
+	MyVector<User*>& getStudents();
 	void addAssignment(const Assignment& assignment);
 	void addStudent(const User* student);
 };

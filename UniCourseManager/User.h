@@ -26,7 +26,7 @@ public:
 	const MyVector<Message>& getMailbox() const;
 	const MyVector<Course*>& getCourses() const;
 	void addMessage(const Message& message);
-	void addCourse(const Course* course);
+	void addCourse(Course* course);
 
 	void changePassword(const MyString& currentPass, const MyString& newPass);
 

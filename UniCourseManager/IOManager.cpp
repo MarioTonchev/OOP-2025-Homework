@@ -67,17 +67,9 @@ void loadMessages(MyVector<User*>& users) {
 			break;
 		}
 
-		int recieverId = tokens[0].toInt();
-		Message message(recieverId, tokens[1], tokens[2], tokens[3], tokens[4]);
-
-		for (size_t i = 0; i < users.getSize(); i++)
-		{
-			if (users[i]->getId() == recieverId)
-			{
-				users[i]->addMessage(message);
-				break;
-			}
-		}
+		User* user = findUser(tokens[0].toInt(), users);
+		Message message(tokens[0].toInt(), tokens[1], tokens[2], tokens[3], tokens[4]);
+		user->addMessage(message);
 	}
 
 	is.close();
@@ -134,6 +126,16 @@ void loadEnrollments(MyVector<User*>& users, MyVector<Course*>& courses) {
 
 		User* user = findUser(userId, users);
 		Course* course = findCourse(courseName, courses);
+
+		if (!user)
+		{
+			throw invalid_argument("User does not exist!");
+		}
+
+		if (!course)
+		{
+			throw invalid_argument("Course does not exist!");
+		}
 
 		user->addCourse(course);
 		course->addStudent(user);
@@ -275,6 +277,45 @@ void deleteMessageFromFile(int userId) {
 
 	remove(messagesFile);
 	rename("temp.txt", messagesFile);
+}
+
+void deleteUserFromEnrollmentFile(int userId) {
+	ifstream is(enrollmentsFile);
+
+	if (!is.is_open())
+	{
+		throw invalid_argument("File does not exist");
+	}
+
+	ofstream os("temp.txt");
+
+	MyString buffer;
+	while (true)
+	{
+		buffer.getline(is);
+
+		if (is.eof())
+		{
+			break;
+		}
+
+		MyVector<MyString> tokens = buffer.split('|');
+
+		if (tokens[0].toInt() == userId)
+		{
+			continue;
+		}
+		else
+		{
+			os << buffer << endl;
+		}
+	}
+
+	is.close();
+	os.close();
+
+	remove(enrollmentsFile);
+	rename("temp.txt", enrollmentsFile);
 }
 
 void updateUsers(MyVector<User*>& users) {

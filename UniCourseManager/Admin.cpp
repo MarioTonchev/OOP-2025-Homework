@@ -67,7 +67,7 @@ void Admin::createStudent(const MyString& name, const MyString& surname, const M
 	os.close();
 }
 
-void Admin::deleteUser(int id, MyVector<User*>& users) {
+void Admin::deleteUser(int id, MyVector<User*>& users, MyVector<Course*>& courses) {
 	if (id == 0)
 	{
 		cout << "You can't delete yourself..." << endl;
@@ -91,8 +91,58 @@ void Admin::deleteUser(int id, MyVector<User*>& users) {
 		}
 	}
 
-	deleteUserFromFile(id);
-	deleteMessageFromFile(id);
+	for (size_t i = 0; i < courses.getSize(); i++)
+	{
+		bool isRemoved = false;
+
+		for (size_t j = 0; j < courses[i]->getStudents().getSize(); j++)
+		{
+			if (courses[i]->getStudents()[j]->getId() == id)
+			{
+				courses[i]->getStudents().remove_at(j);
+				isRemoved = true;
+				break;
+			}
+		}
+
+		if (isRemoved)
+		{
+			break;
+		}
+	}
+
+	for (size_t i = 0; i < courses.getSize(); i++)
+	{
+		bool isRemoved = false;
+
+		for (size_t j = 0; j < courses[i]->getAssignments().getSize(); j++)
+		{
+			for (size_t k = 0; k < courses[i]->getAssignments()[j].getSubmissions().getSize(); k++)
+			{
+				if (courses[i]->getAssignments()[j].getSubmissions()[k].getStudentId() == id)
+				{
+					courses[i]->getAssignments()[j].getSubmissions().remove_at(k);
+					isRemoved = true;
+					break;
+				}
+			}
+
+			if (isRemoved)
+			{
+				break;
+			}
+		}
+
+		if (isRemoved)
+		{
+			break;
+		}
+	}
+
+	updateUsers(users);
+	updateAssignments(courses);
+	updateMessages(users);
+	deleteUserFromEnrollmentFile(id);
 }
 
 void Admin::messageAll(const MyString& content, MyVector<User*>& users) {

@@ -17,8 +17,6 @@ using namespace std;
 
 int main()
 {
-	//To do: when deleting user also delete him from courses and delete his submission from courses!
-	
 	//Make sure to add admin in users.txt before starting the program! Admin|admin|adminov|0000|0
 	MyVector<User*> users;
 	MyVector<Course*> courses;
@@ -61,7 +59,7 @@ int main()
 				}
 				else if (action == "delete_user" && tokens.getSize() == 2)
 				{
-					admin->deleteUser(tokens[1].toInt(), users);
+					admin->deleteUser(tokens[1].toInt(), users, courses);
 				}
 				else if (action == "message_all")
 				{

@@ -26,3 +26,4 @@ void updateAssignments(MyVector<Course*>& courses);
 
 void deleteUserFromFile(int userId);
 void deleteMessageFromFile(int userId);
+void deleteUserFromEnrollmentFile(int userId);

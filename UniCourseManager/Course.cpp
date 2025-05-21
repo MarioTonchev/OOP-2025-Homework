@@ -23,7 +23,7 @@ MyVector<Assignment>& Course::getAssignments() {
 	return assignments;
 }
 
-const MyVector<User*>& Course::getStudents() const {
+MyVector<User*>& Course::getStudents() {
 	return students;
 }
 

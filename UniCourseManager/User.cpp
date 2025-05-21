@@ -38,8 +38,8 @@ void User::addMessage(const Message& message) {
 	mailbox.push_back(message);
 }
 
-void User::addCourse(const Course* course) {
-	courses.push_back((Course*)course);
+void User::addCourse(Course* course) {
+	courses.push_back(course);
 }
 
 void User::changePassword(const MyString& currentPass, const MyString& newPass) {

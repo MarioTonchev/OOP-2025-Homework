@@ -39,6 +39,8 @@ void Admin::createTeacher(const MyString& name, const MyString& surname, const M
 	os << "Teacher|" << name << "|" << surname << "|" << password << "|" << teacher->getId() << endl;
 
 	os.close();
+
+	cout << "Teacher successfully created!" << endl;
 }
 
 void Admin::createStudent(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users) {
@@ -65,6 +67,8 @@ void Admin::createStudent(const MyString& name, const MyString& surname, const M
 	os << "Student|" << name << "|" << surname << "|" << password << "|" << student->getId() << endl;
 
 	os.close();
+
+	cout << "Student successfully created!" << endl;
 }
 
 void Admin::deleteUser(int id, MyVector<User*>& users, MyVector<Course*>& courses) {
@@ -143,6 +147,9 @@ void Admin::deleteUser(int id, MyVector<User*>& users, MyVector<Course*>& course
 	updateAssignments(courses);
 	updateMessages(users);
 	deleteUserFromEnrollmentFile(id);
+
+	delete userToDelete;
+	cout << "User successfully deleted!" << endl;
 }
 
 void Admin::messageAll(const MyString& content, MyVector<User*>& users) {
@@ -164,6 +171,8 @@ void Admin::messageAll(const MyString& content, MyVector<User*>& users) {
 	}
 
 	updateMessages(users);
+
+	cout << "Message sent successfully!" << endl;
 }
 
 void Admin::checkUserMailbox(int id, MyVector<User*>& users) {

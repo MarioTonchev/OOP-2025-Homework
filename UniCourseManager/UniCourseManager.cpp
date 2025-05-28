@@ -17,7 +17,8 @@ using namespace std;
 
 int main()
 {
-	//Make sure to add admin in users.txt before starting the program! Admin|admin|adminov|0000|0
+	//Make sure to add admin in users.txt before starting the program! Example: Admin|admin|adminov|0000|0. Also add a new line after.
+	
 	MyVector<User*> users;
 	MyVector<Course*> courses;
 
@@ -160,7 +161,15 @@ int main()
 			command.getline(cin);
 		}
 	}
-	catch (const std::exception& e)
+	catch (const invalid_argument& e)
+	{
+		cout << e.what();
+	}	
+	catch (const out_of_range& e)
+	{
+		cout << e.what();
+	}	
+	catch (const exception& e)
 	{
 		cout << e.what();
 	}	

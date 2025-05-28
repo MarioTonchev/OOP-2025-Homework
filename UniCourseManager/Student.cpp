@@ -50,6 +50,8 @@ void Student::enroll(const MyString& courseName, const MyString& coursePassword,
 	os << id << "|" << courseName << endl;
 
 	os.close();
+
+	cout << "Successfully enrolled!" << endl;
 }
 
 void Student::finishAssignment(const MyString& courseName, const MyString& assignmentName, const MyString& answer, MyVector<Course*>& courses) {
@@ -81,6 +83,8 @@ void Student::finishAssignment(const MyString& courseName, const MyString& assig
 	assignment->addSubmission(submission);
 
 	updateAssignments(courses);
+
+	cout << "Assignment successfully finished!" << endl;
 }
 
 void Student::checkGrades() const {

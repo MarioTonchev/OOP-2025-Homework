@@ -35,6 +35,8 @@ void Teacher::createCourse(const MyString& courseName, const MyString& coursePas
 	os << course->getName() << "|" << course->getPassword() << "|" << id << endl;
 
 	os.close();
+
+	cout << "Course successfully created!" << endl;
 }
 
 void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*>& users, MyVector<Course*>& courses) {
@@ -95,6 +97,8 @@ void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*
 	os << userId << "|" << courseName << endl;
 
 	os.close();
+
+	cout << "Student successfully enrolled to course!" << endl;
 }
 
 void Teacher::createAssignment(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses) {
@@ -128,6 +132,8 @@ void Teacher::createAssignment(const MyString& courseName, const MyString& assig
 	os << courseName << "|" << assignment.getName() << endl;
 
 	os.close();
+
+	cout << "Assignment successfully created!" << endl;
 }
 
 void Teacher::previewAssignmentWork(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses, MyVector<User*>& users) {
@@ -194,6 +200,9 @@ void Teacher::gradeStudent(const MyString& courseName, const MyString& assignmen
 			assignment->getSubmissions()[i].setGrade(grade);
 			assignment->getSubmissions()[i].setTeacherComment(teacherComment);
 			updateAssignments(courses);
+
+			cout << "Assignment successfully graded!" << endl;
+
 			return;
 		}
 	}
@@ -225,4 +234,6 @@ void Teacher::messageStudents(const MyString& courseName, const MyString& conten
 	}
 
 	updateMessages(users);
+
+	cout << "Message successfully sent!" << endl;
 }

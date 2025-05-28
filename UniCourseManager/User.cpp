@@ -50,6 +50,8 @@ void User::changePassword(const MyString& currentPass, const MyString& newPass) 
 	}
 	
 	password = newPass;
+
+	cout << "Password successfully changed!" << endl;
 }
 
 void User::checkMailbox() const {
@@ -90,6 +92,8 @@ void User::message(int id, const MyString& content, MyVector<User*>& users) cons
 
 	user->addMessage(message);
 	updateMessages(users);
+
+	cout << "Message successfully sent!" << endl;
 }
 
 void User::clearMailbox() {
@@ -97,4 +101,6 @@ void User::clearMailbox() {
 	{
 		mailbox.pop_back();
 	}
+
+	cout << "Mailbox successfully cleared!" << endl;
 }

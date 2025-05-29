@@ -43,6 +43,12 @@ void User::addCourse(Course* course) {
 }
 
 void User::changePassword(const MyString& currentPass, const MyString& newPass) {
+	if (currentPass == "" || newPass == "")
+	{
+		cout << "Current password and new password cannot be empty!" << endl;
+		return;
+	}
+
 	if (currentPass != password)
 	{
 		cout << "Your current password does not match!" << endl;
@@ -69,6 +75,12 @@ void User::checkMailbox() const {
 }
 
 void User::message(int id, const MyString& content, MyVector<User*>& users) const {
+	if (content == "")
+	{
+		cout << "Content cannot be empty!" << endl;
+		return;
+	}
+
 	if (id == this->id)
 	{
 		cout << "You cannot message yourself!" << endl;

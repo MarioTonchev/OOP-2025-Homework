@@ -15,6 +15,12 @@ Teacher::Teacher(const MyString& name, const MyString& surname, const MyString& 
 }
 
 void Teacher::createCourse(const MyString& courseName, const MyString& coursePassword, MyVector<Course*>& courses) {
+	if (courseName == "" || coursePassword == "")
+	{
+		cout << "Course name and password cannot be empty!" << endl;
+		return;
+	}
+	
 	if (findCourse(courseName, courses))
 	{
 		cout << "Course with such name already exists!" << endl;
@@ -40,6 +46,12 @@ void Teacher::createCourse(const MyString& courseName, const MyString& coursePas
 }
 
 void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*>& users, MyVector<Course*>& courses) {
+	if (courseName == "")
+	{
+		cout << "Course name cannot be empty!" << endl;
+		return;
+	}
+	
 	if (userId == 0)
 	{
 		cout << "You cannot add the admin!" << endl;
@@ -75,6 +87,12 @@ void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*
 		return;
 	}
 
+	if (course->getTeacherId() != id)
+	{
+		cout << "You don't have access to this course!" << endl;
+		return;
+	}
+
 	for (size_t i = 0; i < course->getStudents().getSize(); i++)
 	{
 		if (course->getStudents()[i]->getId() == userId)
@@ -102,11 +120,23 @@ void Teacher::addToCourse(const MyString& courseName, int userId, MyVector<User*
 }
 
 void Teacher::createAssignment(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses) {
+	if (courseName == "" || assignmentName == "")
+	{
+		cout << "Course name and assignment name cannot be empty!" << endl;
+		return;
+	}
+	
 	Course* course = findCourse(courseName, courses);
 
 	if (!course)
 	{
 		cout << "Course with such name does not exist!" << endl;
+		return;
+	}
+
+	if (course->getTeacherId() != id)
+	{
+		cout << "You don't have access to this course!" << endl;
 		return;
 	}
 
@@ -137,11 +167,23 @@ void Teacher::createAssignment(const MyString& courseName, const MyString& assig
 }
 
 void Teacher::previewAssignmentWork(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses, MyVector<User*>& users) {
+	if (courseName == "" || assignmentName == "")
+	{
+		cout << "Course name and assignment name cannot be empty!" << endl;
+		return;
+	}
+	
 	Course* course = findCourse(courseName, courses);
 
 	if (!course)
 	{
 		cout << "Course with such name does not exist!" << endl;
+		return;
+	}
+
+	if (course->getTeacherId() != id)
+	{
+		cout << "You don't have access to this course!" << endl;
 		return;
 	}
 
@@ -178,12 +220,24 @@ void Teacher::previewAssignmentWork(const MyString& courseName, const MyString& 
 }
 
 void Teacher::gradeStudent(const MyString& courseName, const MyString& assignmentName, int userId, double grade, const MyString& teacherComment, MyVector<Course*>& courses) {
+	if (courseName == "" || assignmentName == "" || teacherComment == "")
+	{
+		cout << "Course name, assignment name and teacher comment cannot be empty!" << endl;
+		return;
+	}
+	
 	Course* course = findCourse(courseName, courses);
 	Assignment* assignment = findAssignment(assignmentName, courseName, courses);
 
 	if (!course)
 	{
 		cout << "Course with such name does not exist!" << endl;
+		return;
+	}
+
+	if (course->getTeacherId() != id)
+	{
+		cout << "You don't have access to this course!" << endl;
 		return;
 	}
 
@@ -210,7 +264,27 @@ void Teacher::gradeStudent(const MyString& courseName, const MyString& assignmen
 	cout << "User with such id either is not in the course or has not turned his submission in." << endl;
 }
 
-void Teacher::messageStudents(const MyString& courseName, const MyString& content, MyVector<User*>& users) {
+void Teacher::messageStudents(const MyString& courseName, const MyString& content, MyVector<User*>& users, MyVector<Course*>& courses) {
+	if (courseName == "" || content == "")
+	{
+		cout << "Course name and content cannot be empty!" << endl;
+		return;
+	}
+
+	Course* course = findCourse(courseName, courses);
+
+	if (!course)
+	{
+		cout << "Course with such name does not exist!" << endl;
+		return;
+	}
+
+	if (course->getTeacherId() != id)
+	{
+		cout << "You don't have access to this course!" << endl;
+		return;
+	}
+
 	MyString sender;
 	sender += this->name;
 	sender += " ";

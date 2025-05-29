@@ -396,13 +396,11 @@ void updateAssignments(MyVector<Course*>& courses) {
 
 		for (size_t j = 0; j < assignments.getSize(); j++)
 		{
-			os << courses[i]->getName() << "|" << assignments[j].getName();
+			os << courses[i]->getName() << "|" << assignments[j].getName() << "|";
 
 			for (size_t k = 0; k < assignments[j].getSubmissions().getSize(); k++)
 			{
-				os << "|";
-
-				if (i < assignments[j].getSubmissions().getSize() - 1)
+				if (k < assignments[j].getSubmissions().getSize() - 1)
 				{
 					os << assignments[j].getSubmissions()[k].getStudentId() << "," << assignments[j].getSubmissions()[k].getGrade()
 						<< "," << assignments[j].getSubmissions()[k].getAnswer()

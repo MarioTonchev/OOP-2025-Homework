@@ -14,6 +14,12 @@ Student::Student(const MyString& name, const MyString& surname, const MyString& 
 }
 
 void Student::enroll(const MyString& courseName, const MyString& coursePassword, MyVector<Course*>& courses) {
+	if (courseName == "" || coursePassword == "")
+	{
+		cout << "Course name and password cannot be empty!" << endl;
+		return;
+	}
+
 	Course* course = findCourse(courseName, courses);
 
 	if (!course)
@@ -55,6 +61,12 @@ void Student::enroll(const MyString& courseName, const MyString& coursePassword,
 }
 
 void Student::finishAssignment(const MyString& courseName, const MyString& assignmentName, const MyString& answer, MyVector<Course*>& courses) {
+	if (courseName == "" || assignmentName == "" || answer == "")
+	{
+		cout << "Course name, assignment name and answer cannot be empty!" << endl;
+		return;
+	}
+	
 	Course* course = findCourse(courseName, this->courses);
 	Assignment* assignment = findAssignment(assignmentName, courseName, this->courses);
 

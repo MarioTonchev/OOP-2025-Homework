@@ -60,6 +60,13 @@ int main()
 				}
 				else if (action == "delete_user" && tokens.getSize() == 2)
 				{
+					if (tokens[1] == "")
+					{
+						cout << "Id field cannot be empty!" << endl;
+						command.getline(cin);
+						continue;
+					}
+
 					admin->deleteUser(tokens[1].toInt(), users, courses);
 				}
 				else if (action == "message_all")
@@ -69,6 +76,13 @@ int main()
 				}
 				else if (action == "mailbox" && tokens.getSize() == 2)
 				{
+					if (tokens[1] == "")
+					{
+						cout << "Id field cannot be empty!" << endl;
+						command.getline(cin);
+						continue;
+					}
+
 					admin->checkUserMailbox(tokens[1].toInt(), users);
 				}
 
@@ -83,6 +97,13 @@ int main()
 				}
 				else if (action == "add_to_course" && tokens.getSize() == 3)
 				{
+					if (tokens[2] == "")
+					{
+						cout << "Id field cannot be empty!" << endl;
+						command.getline(cin);
+						continue;
+					}
+
 					teacher->addToCourse(tokens[1], tokens[2].toInt(), users, courses);
 				}
 				else if (action == "assign_homework" && tokens.getSize() == 3)
@@ -95,13 +116,20 @@ int main()
 				}
 				else if (action == "grade_assignment" && tokens.getSize() >= 6)
 				{
+					if (tokens[3] == "" || tokens[4] == "")
+					{
+						cout << "Id and grade fields cannot be empty!" << endl;
+						command.getline(cin);
+						continue;
+					}
+
 					MyString comment = vectorToString(tokens, 5);
 					teacher->gradeStudent(tokens[1], tokens[2], tokens[3].toInt(), tokens[4].toDouble(), comment, courses);
 				}
 				else if (action == "message_students" && tokens.getSize() >= 3)
 				{
 					MyString content = vectorToString(tokens, 2);
-					teacher->messageStudents(tokens[1], content, users);
+					teacher->messageStudents(tokens[1], content, users, courses);
 				}
 			}
 			else if (userType == "Student")
@@ -125,6 +153,13 @@ int main()
 
 			if (action == "message" && tokens.getSize() >= 3)
 			{
+				if (tokens[1] == "")
+				{
+					cout << "Id field cannot be empty!" << endl;
+					command.getline(cin);
+					continue;
+				}
+
 				MyString content = vectorToString(tokens, 2);
 				user->message(tokens[1].toInt(), content, users);
 			}

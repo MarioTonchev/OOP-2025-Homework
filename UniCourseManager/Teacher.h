@@ -19,5 +19,5 @@ public:
 	void createAssignment(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses);
 	void previewAssignmentWork(const MyString& courseName, const MyString& assignmentName, MyVector<Course*>& courses, MyVector<User*>& users);
 	void gradeStudent(const MyString& courseName, const MyString& assignmentName, int userId, double grade, const MyString& message, MyVector<Course*>& courses);
-	void messageStudents(const MyString& courseName, const MyString& content, MyVector<User*>& users);
+	void messageStudents(const MyString& courseName, const MyString& content, MyVector<User*>& users, MyVector<Course*>& courses);
 };

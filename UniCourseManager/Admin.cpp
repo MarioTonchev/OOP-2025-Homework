@@ -16,6 +16,12 @@ Admin::Admin(const MyString& name, const MyString& surname, const MyString& pass
 }
 
 void Admin::createTeacher(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users) {
+	if (name == "" || surname == "" || password == "")
+	{
+		cout << "Name, surname and password cannot be empty!" << endl;
+		return;
+	}
+	
 	int id = 0;
 
 	for (size_t i = 0; i < users.getSize(); i++)
@@ -44,6 +50,12 @@ void Admin::createTeacher(const MyString& name, const MyString& surname, const M
 }
 
 void Admin::createStudent(const MyString& name, const MyString& surname, const MyString& password, MyVector<User*>& users) {
+	if (name == "" || surname == "" || password == "")
+	{
+		cout << "Name, surname and password cannot be empty!" << endl;
+		return;
+	}
+	
 	int id = 0;
 
 	for (size_t i = 0; i < users.getSize(); i++)
@@ -153,6 +165,12 @@ void Admin::deleteUser(int id, MyVector<User*>& users, MyVector<Course*>& course
 }
 
 void Admin::messageAll(const MyString& content, MyVector<User*>& users) {
+	if (content == "")
+	{
+		cout << "Content cannot be empty!" << endl;
+		return;
+	}
+
 	MyString sender;
 	sender += this->name;
 	sender += " ";
